@@ -1,5 +1,5 @@
 //pwa
-/*
+
 if ('serviceWorker' in navigator) {
    navigator.serviceWorker.register('/service.js')
    .then(registration => {
@@ -11,7 +11,7 @@ if ('serviceWorker' in navigator) {
 } else {
    console.warn('Service Workers are not supported in this browser.');
 }
-*/
+
 // retrieve data from Local Storage
 
 function getStorageData(isFormatted = false) {
