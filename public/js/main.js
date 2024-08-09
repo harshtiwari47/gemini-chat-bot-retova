@@ -271,7 +271,7 @@ async function processInput(regenerate = false) {
    btnState();
    scrollBottomChat();
 
-   fetch('http://localhost:3000/response',
+   fetch('https://retova.dynamicsartsin.com/response',
       {
          method: 'POST',
          headers: {
