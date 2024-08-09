@@ -52,7 +52,7 @@ app.post('/response', async (req, res) => {
    } catch (error) {
       console.error(error);
       return res.status(400).json({
-         error: `An error occurred while processing your request.`
+         error: `An error occurred while processing your request. Error: ${error}`
       });
    }
 });
