@@ -1,6 +1,6 @@
 
 
-let endpoint = "https://retova-oqv5n0rp.b4a.run/response";
+let endpoint = https://retova.dynamicsartsin.com/response";
 
 //pwa
 
