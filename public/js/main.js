@@ -1,3 +1,7 @@
+
+
+let endpoint = "https://retova-oqv5n0rp.b4a.run/response";
+
 //pwa
 
 if ('serviceWorker' in navigator) {
@@ -271,7 +275,7 @@ async function processInput(regenerate = false) {
    btnState();
    scrollBottomChat();
 
-   fetch('https://retova.dynamicsartsin.com/response',
+   fetch(endpoint,
       {
          method: 'POST',
          headers: {
