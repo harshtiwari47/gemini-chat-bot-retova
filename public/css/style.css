@@ -1,0 +1,571 @@
+@font-face {
+   font-family: 'Fahkwang';
+   font-style: normal;
+   font-weight: 400;
+   font-display: swap;
+   src: url(https://fonts.gstatic.com/s/fahkwang/v16/Noa26Uj3zpmBOgbNpOJ7m6lWHCtTkBjw.woff2) format('woff2');
+   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+   font-family: 'Syncopate';
+   font-style: normal;
+   font-weight: 400;
+   font-display: swap;
+   src: url(https://fonts.gstatic.com/s/syncopate/v21/pe0sMIuPIYBCpEV5eFdCBfe_Kdxicw.woff2) format('woff2');
+   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+* {
+   padding: 0;
+   margin: 0;
+}
+body {
+   background: radial-gradient(circle 150px at 100% 0, #c3effb, #eaedf2);
+   font-family: 'Fahkwang';
+}
+input, textarea, button {
+   font-family: 'Fahkwang';
+}
+.app {
+   height: 100%;
+}
+h1 {
+   padding: 0 12px;
+   font-size: 140%;
+   background: radial-gradient(circle 70px at 0% 10%, #3f609edb, #000);
+   -webkit-background-clip: text;
+   background-clip: text;
+   color: transparent;
+   font-family: 'Syncopate';
+   letter-spacing: 2px;
+}
+.chat {
+   padding: 0 8px;
+   display: flex;
+   flex-direction: column;
+   grow: 1;
+   box-sizing: border-box;
+   place-items: center;
+   overflow: hidden;
+   height: 100%;
+}
+.inputInterface {
+   flex-grow: 1;
+   display: grid;
+   grid-template-columns: 6fr 1fr;
+   padding: 12px 8px;
+   width: 100%;
+   grid-gap: 4px;
+   box-sizing: border-box;
+   background: linear-gradient(to right, #fef0f0c5, #b9e0fa, #bfb9fa, #f5f7ff, #9eeacc, #fee6e6c4);
+}
+.inputInterface textarea {
+   padding: 8px 12px;
+   border: 0;
+   border-radius: 8px;
+   font-size: clamp(1rem, 108%, 1rem);
+   box-sizing: border-box;
+   width: 100%;
+   color: #000;
+   resize: none;
+   overflow-y: scroll;
+   height: calc((1.5em * 1) + 16px);
+   transition: height 0.35s ease;
+   white-space: pre-wrap;
+}
+
+.inputInterface textarea::placeholder {
+   color: #24244ae3;
+   font-style: regular;
+   font-size: 105%;
+   text-align: center;
+}
+
+.inputInterface textarea:focus {
+   outline: 0;
+   background: linear-gradient(to right, #ffffffc5, #fbf4eecc);
+   border-bottom: 2px solid #99cdf7;
+   box-shadow: 0 4px 6px rgba(137,212,248,0.226);
+}
+.inputInterface textarea:has(:focus)::placeholder {
+   color: #24244ae3;
+}
+.inputInterface .methodsInput {
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+   flex: 1;
+   display: grid;
+   place-items: center;
+}
+.inputInterface button {
+   padding: 8px 10px;
+   border: 0;
+   border-radius: 8px;
+   color: #fff;
+   background: #060f1e;
+   font-weight: 800;
+   max-height: 40px;
+   max-width: 40px;
+   box-sizing: border-box;
+   display: grid;
+   place-items: center;
+   transition: border-radius 0.3s ease;
+}
+.inputInterface button svg {
+   width: 100%;
+   fill: #fff;
+}
+.inputInterface .expand {
+   max-height: 50px;
+   display: none;
+   background: #00000000;
+}
+.inputInterface .expand.expanded {
+   display: block;
+}
+.inputInterface .expand.expanded svg {
+   transform: rotate(180deg);
+}
+
+.methodsInput .expand.active {
+   background: #00000000;
+   display: block;
+}
+.methodsInput .expand.active svg path {
+   fill: #000;
+}
+.inputInterface button:nth-child(1) {
+   background: radial-gradient(circle 30px at 0 0, #303347db, #202438);
+   position: relative;
+   animation: backgroundColor 1s ease infinite alternate;
+}
+@keyframes backgroundColor {
+   from {
+      transform: scale(0.95);
+      background: radial-gradient(circle 30px at 0 0, #303347db, #202438);
+   }
+   to {
+      transform: scale(1);
+      background: radial-gradient(circle 30px at 0 0, #3e6278db, #202438);
+   }
+}
+
+.inputInterface button:nth-child(1).wait {
+   border-radius: 100%;
+   background: linear-gradient(#000, #8e150a)!important;
+   animation: backgroundColor .5s ease infinite alternate;
+   box-shadow: 0 0 10px #c11d0e7c;
+}
+#response {
+   margin: 0 18px;
+   width: 100%;
+   height: 100%;
+   overflow-y: scroll;
+   scroll-behavior: smooth;
+   background: linear-gradient(45deg, #d3dde6e2, #c7cee3);
+   border-radius: 10px;
+   padding: 12px 18px;
+   scrollbar-width: none;
+   position: relative;
+   box-sizing: border-box;
+}
+#response::-webkit-scrollbar {
+   display: none;
+}
+#response .template {
+   border-left: 2px solid;
+   border-image: linear-gradient(to bottom, #1d408e8b, #76c7cc8b) 1;
+   padding: 4px 16px;
+   color: #163276;
+   margin: 12px 0;
+   font-size: clamp(1rem, 108%, 1rem);
+   line-height: 1.4;
+   letter-spacing: 0.9px;
+}
+#response .blink {
+   width: 3px!important;
+   height: 20px;
+   display: inline-flex;
+   background: #00000000;
+   color: #22726c;
+   margin-left: 6px;
+   animation: blink .3s ease infinite alternate;
+}
+@keyframes blink {
+   from {
+      transform: scale(0.8);
+      opacity: 0;
+   }
+   to {
+      opacity: 1;
+      transform: scale(1);
+   }
+}
+#response .template .highlight {
+   background: #c4ddf6c7;
+}
+
+.userMsg {
+   color: #191e43;
+   border-right: 4px solid;
+   border-image: linear-gradient(to bottom, #83a2f6, #0b2032) 1;
+   padding: 8px 16px;
+   background: linear-gradient(to left, #bcc6e4, #00000000);
+   white-space: break;
+   word-break: break-word;
+   font-size: 105%;
+   text-align: right;
+   margin-bottom: 1px;
+}
+.userMsg:hover {
+   background: #cdd0f694;
+}
+.aiMsg {
+   /*background: #42333f;*/
+   color: #040405;
+   padding: calc(8px + 0.6vw);
+   border-bottom: 1px solid #b3bad6b3;
+   word-break: break-word;
+   word-wrap: break-word;
+   width: 100%;
+   box-sizing: border-box;
+   font-size: 102%;
+}
+
+.aiMsg p {
+   padding: calc(6px + 0.25vw) 0;
+   word-break: break-word;
+   word-wrap: break-word;
+   line-height: 1.47;
+}
+.aiMsg strong {
+   letter-spacing: 1px;
+}
+.aiMsg h1, h2, h3, h4, h5,h6 {
+   padding: 10px 0;
+}
+.aiMsg ul, ol {
+   padding: 0 0 0 28px;
+}
+.aiMsg li {
+   padding: calc(6px + 0.25vw) 0;
+   line-height: 1.47;
+   width: 100%;
+   box-sizing: border-box;
+}
+.aiMsg ul li::marker {
+   color: #02042fc4;
+}
+.aiMsg a {
+   color: #526eee;
+}
+.aiMsg code {
+   overflow: hidden;
+   background: #c1cee2bf;
+   border-radius: 4px;
+   padding: 2px 4px;
+   margin: 2px;
+   white-space: pre-wrap;
+   word-break: break-word;
+   box-sizing: border-box;
+   display: inline;
+}
+.aiMsg pre code {
+   line-height: 1.48;
+   background: #d1d3e6;
+   border: 1px solid #d3d6ed;
+   border-top: 0px;
+   width: calc(100% - 4px);
+   padding: 8px;
+   box-sizing: border-box;
+}
+.aiMsg pre {
+   box-sizing: border-box;
+}
+.codeHeaders {
+   padding: 0 calc(8px + 0.6vw);
+   margin: 0 0 0 0px;
+   width: 100%;
+   box-sizing: border-box;
+   display: grid;
+   grid-template-columns: 2fr 1.3fr;
+   justify-content: center;
+   align-items: center;
+   background: #e0e2f0;
+   font-size: 80%;
+   border-radius: 4px 4px 0 0;
+}
+.codeHeaders p:nth-child(1) {
+   color: #364569;
+   grow: 1;
+}
+.codeHeaders p:nth-child(2) {
+   background: #c1c5e22a;
+   width: 100%;
+   margin: 6px 0;
+   box-sizing: border-box;
+   border-radius: 6px;
+   text-align: center;
+   padding: 4px 8px;
+   font-size: 80%;
+}
+.codeHeaders p:nth-child(2):hover {
+   background: #c1c5e28f;
+}
+.error {
+   color: #910a0a;
+   border-left: 2px solid #e30a0a;
+   padding: 8px 16px;
+   margin: 8px 0;
+   background: linear-gradient(to right, #fde9e9, #00000000);
+}
+.respFooter {
+   display: flex;
+   height: calc(36px + 0.6vw);
+   width: 76px;
+   padding: 6px 0;
+   align-items: center;
+   justify-content: space-between;
+}
+.respFooter div {
+   width: calc(25px + 0.6vw);
+   height: calc(25px + 0.6vw);
+   border-radius: 8px;
+   background: #bcc6e4;
+   display: grid;
+   place-items: center;
+   box-sizing: border-box;
+}
+.respFooter div svg {
+   width: 16px;
+   height: 16px;
+}
+@keyframes msg {
+   from {
+      transform: scale(0.95);
+   }
+   to {
+      transform: scale(1);
+   }
+}
+.app:hover:has(.drawer.active) .chat {
+   filter: blur(6px);
+   transition: filter 0.5s ease;
+}
+header {
+   position: relative;
+   width: 100%;
+   display: flex;
+   place-items: center;
+   padding: calc(10px + 0.3vw) 8px;
+}
+.drawerBtn {
+   border-radius: 100%;
+   background: #00000000;
+   width: 35px;
+   height: 35px;
+   color: #fff;
+   display: grid;
+   align-item: center;
+   place-content: center;
+   margin-left: 8px;
+}
+.drawerBtn div {
+   width: 20px;
+   height: 2px;
+   margin: 2px 0;
+   background: radial-gradient(circle 30px at 0 0, #303347db, #202438);
+
+}
+.drawer {
+   display: none;
+   height: 100%;
+   padding: calc(2vw + 16px) 0;
+   box-sizing: border-box;
+   width: 85vw;
+   background: #eff3f5ce;
+   position: absolute;
+   top: 0;
+   left: 0;
+   z-index: 99;
+   overflow-y: scroll;
+   scrollbar-width: none;
+}
+.drawerActiveBtn {
+   position: absolute;
+   right: 8px;
+   top: 25px;
+   border-radius: 100%;
+   background: #eff3f592;
+   width: 50px;
+   height: 50px;
+   color: #000;
+   display: grid;
+   align-item: center;
+   place-content: center;
+   font-size: 200%;
+   font-weight: 800;
+   border: 1px solid #c7ebf8;
+   border-right: 0;
+}
+.drawer.active {
+   display: block;
+   animation: drawer .3s linear;
+}
+.drawer.inactive {
+   animation: drawerInVis .3s linear;
+}
+.drawer .divlist {
+   display: none;
+   padding: 8px;
+   overflow: hidden;
+   background: linear-gradient(#cfdce3, #ffffff00);
+   margin: 12px 0;
+}
+.drawer .divlist div {
+   font-weight: 500;
+   white-space: nowrap;
+   overflow: hidden;
+   padding: 8px calc(2vw + 16px);
+   font-size: clamp(14px, 42% + 2vw, 0.9rem);
+   color: #2f4447f7;
+   line-height: 1.5;
+   height: calc((1.5em * .5) + 12px);
+   border-bottom: 1px solid;
+   border-image: linear-gradient(to right, #00000000, #21515e78, #00000000) 1;
+}
+.chatHistoryList div.create {
+   font-weight: 600;
+   color: #1a2830;
+   background: linear-gradient(to right, #ebf1f4, #dbe1e6);
+   display: grid;
+   place-items: center;
+   border-radius: 4px;
+   padding: 3px 0;
+   font-size: 90%;
+   margin: 8px;
+   border: 0;
+}
+.drawer .divlist strong {
+   font-weight: 500;
+   color: #010101f7;
+}
+.chatHistoryList div.create:hover {
+   background: #ebf1f4;
+}
+.drawer .divlist div:hover {
+   color: #2a4a88;
+   background: linear-gradient(to right, #e4f3f9, #00000000);
+}
+.divlist.visibile {
+   display: block;
+}
+@keyframes drawer {
+   from {
+      transform: translateX(-180vw);
+   }
+   to {
+      transform: translateX(0vw);
+   }
+}
+
+@keyframes drawerInVis {
+   from {
+      display: block;
+      transform: translateX(0vw);
+   }
+   to {
+      transform: translateX(-160vw);
+      display: none;
+   }
+}
+.drawer .drawerMain {
+   padding: calc(8px + 1vw) calc(2vw + 16px);
+}
+.drawer h2 {
+   padding: 8px 0;
+   color: #5260f9;
+}
+.drawer section {
+   padding: calc(4px + 1vw) 0;
+   color: #141452;
+}
+.drawer section h3 {
+   font-size: 95%;
+   padding: 0 calc(2vw + 16px);
+}
+.drawer ul {
+   list-style: none;
+   padding: 4px 12px;
+   font-size: 90%;
+}
+
+.drawer ul .toggle {
+   position: relative;
+}
+
+.drawer ul .toggle::after {
+   content: attr(data-togglestate);
+   position: absolute;
+   background: linear-gradient(to right, #00000000, #eff3f5ce);
+   height: 100%;
+   width: 50px;
+   top: 0;
+   color: #163740b1;
+   display: grid;
+   place-items: center;
+   right: 0;
+   font-size: 110%;
+}
+
+.drawer ul li:hover {
+   background: radial-gradient(circle 69px at -25px -25px, #a3b0e7, #00000000);
+}
+.drawer ul li:hover a {
+   color: #334695;
+}
+.drawer ul li {
+   padding: calc(10px + .4vw) calc(2vw + 16px);
+   box-sizing: border-box;
+   width: 100%;
+}
+.drawer ul a, .drawer ul span {
+   text-decoration: none;
+   color: #1d2029;
+   width: 100%;
+}
+
+@media screen and (min-width: 580px) {
+   .app {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+   }
+   header {
+      padding: calc(18px + .5vw);
+   }
+   .drawer {
+      display: block;
+      width: 100%;
+      position: relative;
+      height: 100%;
+      overflow-y: scroll;
+      background: radial-gradient(circle 260px at 0 0, #c9e8f6f2, #eff3f5ce);
+   }
+   .drawerActiveBtn {
+      display: none;
+   }
+   .drawerBtn {
+      display: none;
+   }
+   .drawer ul li {
+      padding: calc(8px + .5vw) calc(2vw + 16px);
+   }
+   .codeHeaders {
+      grid-template-columns: 4fr 1fr;
+   }
+}
+@media screen and (min-width: 1920px) {
+:root {
+   font-size: calc(1rem + 0.425vw);
+}
+}

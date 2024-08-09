@@ -1,0 +1,69 @@
+<html>
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>
+      Retova
+   </title>
+   <meta name="theme-color" content="#e5ebfd">
+   <link rel="stylesheet" href='css/style.css'>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/intellij-light.min.css">
+   <link rel="manifest" href="/manifest.json">
+   <link rel="icon" href="/icon/fav_192.png">
+   <link rel="apple-touch-icon" href="/icon/fav_192.png">
+</head>
+<body>
+   <div class="app">
+      <div id="drawer" class="drawer">
+         <div onclick="drawer(1)" class="drawerActiveBtn">
+            ×
+         </div>
+         <div class="drawerMain">
+            <h2>Hello! User</h2>
+         </div>
+         <section>
+            <h3>PROFILE DETAILS</h3>
+            <ul>
+               <li><a href="#account">Account</a></li>
+               <li id="chathistory" class="toggle" data-togglestate="⛬"><a href="javascript:void()">Chat History</a></li>
+               <div class="chatHistoryList divlist" id="chatHistoryList">
+               </div>
+               <li id="usagehistory" class="toggle" data-togglestate="⛬"><a href="#bot-usage">Bot Usage</a></li>
+               <div class="botUsageList divlist" id="botUsageList">
+               </div>
+               <li><a href="#settings">Settings</a></li>
+            </ul>
+         </section>
+         <section>
+            <h3>NAVIGATION</h3>
+            <ul>
+               <li><a href="#about-us">About Us</a></li>
+               <li><a href="#privacy-policy">Privacy Policy</a></li>
+               <li><a href="#terms-of-service">Terms of Service</a></li>
+               <li><a href="#contact">Contact Us</a></li>
+            </ul>
+         </section>
+      </div>
+      <div class="chat">
+         <header>
+            <div onclick="drawer(0)" class="drawerBtn">
+               <div></div>
+               <div></div>
+               <div></div>
+            </div>
+            <h1>RETOVA</h1>
+         </header>
+         <div id="response">
+         </div>
+         <div class="inputInterface">
+            <textarea id="userMessage" placeholder="Ask Me Anything..."></textarea>
+            <div class="methodsInput">
+               <button id="sendBtn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#fff" d="M16 7.328v-3.328l8 8-8 8v-3.328l-16-4.672z" /></svg></button>
+               <button class="expand" id="expBtn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#000" d="M12 5.887l8.468 14.113h-16.936l8.468-14.113zm0-3.887l-12 20h24l-12-20z" /></svg></button>
+            </div>
+         </div>
+      </div>
+   </div>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+   <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "google",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "mdoule",
+  "keywords": [],
+  "author": "Harsh Tiwari",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@google/generative-ai": "^0.16.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "marked": "^13.0.3",
+    "nodejs": "^0.0.0",
+    "openai": "^4.55.1"
+  }
+}
